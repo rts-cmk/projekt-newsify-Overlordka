@@ -1,1 +1,76 @@
 @use '../../style/variables' as var
+
+.news-sec
+    display: flex
+    flex-direction: column
+    gap: 20px
+    padding: 20px
+    background-color: var(--main-color-background)
+
+    &_div-logo
+        display: flex
+        justify-content: center
+        align-items: center
+        gap: 5px
+
+    &_logo
+        width: 25px
+
+    &_title
+        font-size: 24px
+        font-weight: 900
+
+    &_search-bar
+        width: 100%
+        height: 40px
+        border: none
+        border-radius: 5px
+        padding: 0 15px
+        font-size: 16px
+        color: var.$text-color
+        background-color: var.$search-background
+
+        &::placeholder
+            color: var.$secondary-text-color
+            opacity: 1
+
+.footer-sec
+    position: fixed
+    bottom: 0
+    left: 0
+    width: 100vw
+    height: 100px
+    background-color: var(--main-color-background)
+    display: flex
+    justify-content: center
+    align-items: center
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.426)
+
+
+
+    &_ul
+        padding: 0
+        list-style: none
+        display: flex
+        gap: 50px
+
+    &_link
+        text-decoration: none
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+
+    &_p
+        margin-top: 5px
+        font-size: 12px
+
+    &_svg
+        stroke: var(--text-color) !important
+
+.use-link
+    color: var.$secondary-green-color !important
+    stroke: var.$secondary-green-color !important
+
+.unuse-link
+    stroke: var(--text-color) !important
