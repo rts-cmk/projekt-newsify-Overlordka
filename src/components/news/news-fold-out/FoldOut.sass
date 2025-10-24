@@ -1,0 +1,43 @@
+@use '../../../style/variables' as var
+
+.details-fold
+    border: 2px solid var.$add-grey-color
+    border-left: none
+    border-right: none
+    border-bottom: none
+    padding: 5px 20px
+
+    &:last-of-type
+        border: 2px solid var.$add-grey-color
+        border-left: none
+        border-right: none
+
+    &_summary
+        list-style: none
+        display: flex
+        align-items: center
+        justify-content: space-between
+        cursor: pointer
+
+    &_summary-div
+        display: flex
+        gap: 10px
+ 
+    &_summary-img
+        width: 20px
+        height: auto
+
+    &_summary-h2
+        font-weight: 1000
+        text-transform: uppercase
+        font-size: 16px
+
+    &_summary-svg
+        width: 24px
+        height: 24px
+        stroke: var(--text-color)
+        transform: rotate(0deg)
+        transition: transform 0.3s ease
+
+    &[open] .details-fold_summary-svg
+        transform: rotate(-90deg)

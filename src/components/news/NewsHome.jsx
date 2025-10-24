@@ -1,17 +1,18 @@
 import "./NewsHome.sass"
 import { Link } from "react-router-dom"
-import { use, useEffect } from "react"
+import FoldOut from "./news-fold-out/FoldOut"
+// import { use, useEffect } from "react"
 
 
 export default function NewsHome() {
 
-    useEffect(() => {
-        fetch(
-            "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=ICA2X9HgTEKTtOPxfnOSyPTrLR3TTaHc"
-        )
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch(
+    //         "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=ICA2X9HgTEKTtOPxfnOSyPTrLR3TTaHc"
+    //     )
+    //         .then((response) => response.json())
+    //         .then((data) => console.log(data))
+    // }, [])
 
     return (
         <>
@@ -25,7 +26,7 @@ export default function NewsHome() {
                 </section>
             </header>
             <main>
-
+                <FoldOut/>
             </main>
             <footer>
                 <section className="footer-sec">

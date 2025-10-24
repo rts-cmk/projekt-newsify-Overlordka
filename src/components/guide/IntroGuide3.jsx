@@ -4,6 +4,16 @@ import "./IntroGuide.sass"
 export default function IntroGuide2() {
     const navigate = useNavigate();
 
+    const handleFinish = () => {
+        localStorage.setItem("guideComplited", "true")
+        navigate("/login")
+    }
+
+    const handleSkip = () => {
+        localStorage.setItem("guideComplited", "true")
+        navigate("/login")
+    }
+
     return (
         <section className="guide-section">
             <article className="guide-article">
@@ -21,8 +31,8 @@ export default function IntroGuide2() {
                 <div className="guide-section_item current"></div>
             </section>
             <div className="guide-section_buttons">
-                <button onClick={() => navigate("/login")} className="guide-section_button skip">Skip</button>
-                <button onClick={() => navigate("/login")} className="guide-section_button continue">Continue</button>
+                <button onClick={handleSkip} className="guide-section_button skip">Skip</button>
+                <button onClick={handleFinish} className="guide-section_button continue">Continue</button>
             </div>
         </section>
     )
