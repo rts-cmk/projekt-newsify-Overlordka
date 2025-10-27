@@ -1,18 +1,47 @@
 import "./NewsHome.sass"
 import { Link } from "react-router-dom"
 import FoldOut from "./news-fold-out/FoldOut"
-// import { use, useEffect } from "react"
+import { useState, useEffect } from "react"
 
 
 export default function NewsHome() {
 
-    // useEffect(() => {
-    //     fetch(
-    //         "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=ICA2X9HgTEKTtOPxfnOSyPTrLR3TTaHc"
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) => console.log(data))
-    // }, [])
+    const [articles, setArticles] = useState([])
+    const apiKey = "ICA2X9HgTEKTtOPxfnOSyPTrLR3TTaHc"
+
+    useEffect(() => {
+        const cashed = localStorage.getItem("cachedNews")
+        console.log("Saved articles:", JSON.parse(localStorage.getItem("cachedNews")))
+        const casheTime = localStorage.getItem("cacheTime")
+        const now = Date.now()
+
+        if (cashed && casheTime && now - Number(casheTime) < 10 * 60 * 1000) {
+            setArticles(JSON.parse(cashed))
+            console.log("loaded cash")
+            return
+        }
+
+        const query = "health OR sport OR travel"
+        const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${encodeURIComponent(query)}&api-key=${apiKey}`
+
+        fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+            if(data.response?.docs) {
+                setArticles(data.response.docs)
+                localStorage.setItem("cachedNews", JSON.stringify(data.response.docs))
+                localStorage.setItem("cacheTime", now)
+            }
+        })
+        .catch((err) => console.error("Fetch error:", err));
+    }, [])
+
+    const grouped = {
+        sport: articles.filter((a) => a.section_name?.toLowerCase().includes("sport")),
+        health: articles.filter((a) => a.section_name?.toLowerCase().includes("health")),
+        travel: articles.filter((a) => a.section_name?.toLowerCase().includes("travel"))
+
+    }
 
     return (
         <>
@@ -26,7 +55,9 @@ export default function NewsHome() {
                 </section>
             </header>
             <main>
-                <FoldOut/>
+                <FoldOut title="Sport" articles={grouped.sport} />
+                <FoldOut title="Health" articles={grouped.health} />
+                <FoldOut title="Travel" articles={grouped.travel} />
             </main>
             <footer>
                 <section className="footer-sec">
