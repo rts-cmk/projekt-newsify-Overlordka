@@ -7,7 +7,7 @@ import { useState, useEffect } from "react"
 export default function NewsHome() {
 
     const [articles, setArticles] = useState([])
-    const apiKey = "ICA2X9HgTEKTtOPxfnOSyPTrLR3TTaHc"
+    const apiKey = import.meta.env.VITE_API_KEY
 
     useEffect(() => {
         const cashed = localStorage.getItem("cachedNews")
@@ -15,31 +15,51 @@ export default function NewsHome() {
         const casheTime = localStorage.getItem("cacheTime")
         const now = Date.now()
 
-        if (cashed && casheTime && now - Number(casheTime) < 10 * 60 * 1000) {
+        if (cashed && casheTime && now - Number(casheTime) < 30 * 60 * 1000) {
             setArticles(JSON.parse(cashed))
             console.log("loaded cash")
             return
         }
 
-        const query = "health OR sport OR travel"
+        const query = "health OR sport OR travel OR europe OR business"
         const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${encodeURIComponent(query)}&api-key=${apiKey}`
 
         fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-            if(data.response?.docs) {
-                setArticles(data.response.docs)
-                localStorage.setItem("cachedNews", JSON.stringify(data.response.docs))
-                localStorage.setItem("cacheTime", now)
-            }
-        })
-        .catch((err) => console.error("Fetch error:", err));
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.response?.docs) {
+                    setArticles(data.response.docs)
+                    localStorage.setItem("cachedNews", JSON.stringify(data.response.docs))
+                    localStorage.setItem("cacheTime", now)
+                }
+            })
+            .catch((err) => console.error("Fetch error:", err));
     }, [])
 
+
+    const matchCategory = (article, keyword) => {
+        const section = article.section_name?.toLowerCase() || ""
+        const hasSection = section.includes(keyword)
+
+        const subsection = article.subsection_name?.toLowerCase() || ""
+        const hasSubSection = subsection.includes(keyword)
+
+        const hasKeyword = article.keywords?.some(
+            (k) =>
+                (k.name === "subject" || k.name === "location") &&
+                k.value.toLowerCase().includes(keyword)
+
+            ) || false
+
+            return hasSection || hasKeyword || hasSubSection
+    }
+
     const grouped = {
-        sport: articles.filter((a) => a.section_name?.toLowerCase().includes("sport")),
-        health: articles.filter((a) => a.section_name?.toLowerCase().includes("health")),
-        travel: articles.filter((a) => a.section_name?.toLowerCase().includes("travel"))
+        sport: articles.filter((a) => matchCategory(a, "sport")),
+        health: articles.filter((a) => matchCategory(a,"health")),
+        travel: articles.filter((a) => matchCategory(a,"travel")),
+        europe: articles.filter((a) => matchCategory(a,"europe")),
+        business: articles.filter((a) => matchCategory(a,"business")),
 
     }
 
@@ -58,6 +78,8 @@ export default function NewsHome() {
                 <FoldOut title="Sport" articles={grouped.sport} />
                 <FoldOut title="Health" articles={grouped.health} />
                 <FoldOut title="Travel" articles={grouped.travel} />
+                <FoldOut title="Europe" articles={grouped.europe} />
+                <FoldOut title="Business" articles={grouped.business} />
             </main>
             <footer>
                 <section className="footer-sec">
