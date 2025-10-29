@@ -1,67 +1,12 @@
 import "./NewsHome.sass"
 import { Link } from "react-router-dom"
 import FoldOut from "./news-fold-out/FoldOut"
-import { useState, useEffect } from "react"
+import { matchCategory } from "../../script/hooks/matchCategory.js"
 
 
 export default function NewsHome() {
 
-    const [articles, setArticles] = useState([])
-    const apiKey = import.meta.env.VITE_API_KEY
-
-    useEffect(() => {
-        const cashed = localStorage.getItem("cachedNews")
-        console.log("Saved articles:", JSON.parse(localStorage.getItem("cachedNews")))
-        const casheTime = localStorage.getItem("cacheTime")
-        const now = Date.now()
-
-        if (cashed && casheTime && now - Number(casheTime) < 30 * 60 * 1000) {
-            setArticles(JSON.parse(cashed))
-            console.log("loaded cash")
-            return
-        }
-
-        const query = "health OR sport OR travel OR europe OR business"
-        const url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${encodeURIComponent(query)}&api-key=${apiKey}`
-
-        fetch(url)
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.response?.docs) {
-                    setArticles(data.response.docs)
-                    localStorage.setItem("cachedNews", JSON.stringify(data.response.docs))
-                    localStorage.setItem("cacheTime", now)
-                }
-            })
-            .catch((err) => console.error("Fetch error:", err));
-    }, [])
-
-
-    const matchCategory = (article, keyword) => {
-        const section = article.section_name?.toLowerCase() || ""
-        const hasSection = section.includes(keyword)
-
-        const subsection = article.subsection_name?.toLowerCase() || ""
-        const hasSubSection = subsection.includes(keyword)
-
-        const hasKeyword = article.keywords?.some(
-            (k) =>
-                (k.name === "subject" || k.name === "location") &&
-                k.value.toLowerCase().includes(keyword)
-
-            ) || false
-
-            return hasSection || hasKeyword || hasSubSection
-    }
-
-    const grouped = {
-        sport: articles.filter((a) => matchCategory(a, "sport")),
-        health: articles.filter((a) => matchCategory(a,"health")),
-        travel: articles.filter((a) => matchCategory(a,"travel")),
-        europe: articles.filter((a) => matchCategory(a,"europe")),
-        business: articles.filter((a) => matchCategory(a,"business")),
-
-    }
+    const grouped = matchCategory()
 
     return (
         <>
