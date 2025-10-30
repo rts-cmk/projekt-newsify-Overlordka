@@ -2,11 +2,23 @@ import "./NewsHome.sass"
 import { Link } from "react-router-dom"
 import FoldOut from "./news-fold-out/FoldOut"
 import { matchCategory } from "../../script/hooks/matchCategory.js"
+import { searchNews } from "../../script/searchNews.js"
+import { useState } from "react"
 
 
 export default function NewsHome() {
 
     const grouped = matchCategory()
+
+    const [query, setQuery] = useState("")
+
+    const filtered = {
+        sport: searchNews(grouped.sport, query),
+        health: searchNews(grouped.health, query),
+        travel: searchNews(grouped.travel, query),
+        europe: searchNews(grouped.europe, query),
+        business: searchNews(grouped.business, query),
+    }
 
     return (
         <>
@@ -16,15 +28,15 @@ export default function NewsHome() {
                         <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="news-sec_logo" />
                         <h2 className="news-sec_title">Newsify</h2>
                     </div>
-                    <input type="text" className="news-sec_search-bar" placeholder="Search news" />
+                    <input type="text" className="news-sec_search-bar" placeholder="Search news" onChange={(e) => setQuery(e.target.value.toLowerCase())} />
                 </section>
             </header>
             <main>
-                <FoldOut title="Sport" articles={grouped.sport} />
-                <FoldOut title="Health" articles={grouped.health} />
-                <FoldOut title="Travel" articles={grouped.travel} />
-                <FoldOut title="Europe" articles={grouped.europe} />
-                <FoldOut title="Business" articles={grouped.business} />
+                <FoldOut title="Sport" articles={filtered.sport} />
+                <FoldOut title="Health" articles={filtered.health} />
+                <FoldOut title="Travel" articles={filtered.travel} />
+                <FoldOut title="Europe" articles={filtered.europe} />
+                <FoldOut title="Business" articles={filtered.business} />
             </main>
             <footer>
                 <section className="footer-sec">
