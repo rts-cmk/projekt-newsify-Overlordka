@@ -1,15 +1,12 @@
 import "./NewsHome.sass"
 import { Link } from "react-router-dom"
-import FoldOut from "./news-fold-out/FoldOut"
-import { matchCategory } from "../../script/hooks/matchCategory.js"
+import FoldOutAchive from "./news-fold-out/FoldOutAchive.jsx"
 import { searchNews } from "../../script/searchNews.js"
 import { useState } from "react"
-
+import { useAchive } from "../../script/hooks/useAchive.js"
 
 export default function NewsAchive() {
-
-    const grouped = matchCategory()
-
+    const grouped = useAchive()
     const [query, setQuery] = useState("")
 
     const filtered = {
@@ -25,18 +22,28 @@ export default function NewsAchive() {
             <header>
                 <section className="news-sec">
                     <div className="news-sec_div-logo">
-                        <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="news-sec_logo" />
+                        <img
+                            src="../src/assets/logo&icons/newsify_logo.svg"
+                            alt="Newsify"
+                            className="news-sec_logo"
+                        />
                         <h2 className="news-sec_title">Newsify</h2>
                     </div>
-                    <input type="text" className="news-sec_search-bar" placeholder="Search news" onChange={(e) => setQuery(e.target.value.toLowerCase())} />
+                    <input
+                        type="text"
+                        className="news-sec_search-bar"
+                        placeholder="Search saved news"
+                        onChange={(e) => setQuery(e.target.value.toLowerCase())}
+                    />
                 </section>
             </header>
+
             <main>
-                <FoldOut title="Sport" articles={filtered.sport} />
-                <FoldOut title="Health" articles={filtered.health} />
-                <FoldOut title="Travel" articles={filtered.travel} />
-                <FoldOut title="Europe" articles={filtered.europe} />
-                <FoldOut title="Business" articles={filtered.business} />
+                <FoldOutAchive title="Sport" articles={filtered.sport} />
+                <FoldOutAchive title="Health" articles={filtered.health} />
+                <FoldOutAchive title="Travel" articles={filtered.travel} />
+                <FoldOutAchive title="Europe" articles={filtered.europe} />
+                <FoldOutAchive title="Business" articles={filtered.business} />
             </main>
             <footer>
                 <section className="footer-sec">

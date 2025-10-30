@@ -37,10 +37,12 @@ export default function FouldOut({ title, articles = [] }) {
                 articlesAchive = Array.isArray(parsed) ? parsed : []
             }
 
-            
-            const exists = articlesAchive.some(
-                (aa) => aa._id === article._id || aa.url === article.url || aa.uri === article.uri
-            )
+            const articleId = article._id || article.uri || article.web_url || article.url
+
+            const exists = articlesAchive.some((aa) => {
+                const aaId = aa._id || aa.uri || aa.web_url || aa.url
+                return aaId === articleId
+            })
 
             if (!exists) {
                 articlesAchive.push(article)
@@ -53,6 +55,7 @@ export default function FouldOut({ title, articles = [] }) {
             console.error("❌ Error saving article to localStorage:", err)
         }
     }
+
 
 
 
