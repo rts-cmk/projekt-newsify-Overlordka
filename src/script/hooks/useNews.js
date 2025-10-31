@@ -14,7 +14,6 @@ export function useNews(){
 
       if (cached && cacheTime && now - Number(cacheTime) < 22 * 60 * 60 * 1000) {
         console.log("Loaded from cache");
-        console.log(JSON.parse(cached))
         setArticles(JSON.parse(cached));
         return;
       }
