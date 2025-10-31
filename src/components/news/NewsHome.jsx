@@ -37,6 +37,7 @@ export default function NewsHome() {
                 <FoldOut title="Travel" articles={filtered.travel} />
                 <FoldOut title="Europe" articles={filtered.europe} />
                 <FoldOut title="Business" articles={filtered.business} />
+                <a href="https://developer.nytimes.com" target="_blank" className="logo-nyt"><img src="https://developer.nytimes.com/files/poweredby_nytimes_30a.png?v=1583354208339" alt="nyt" className="logo-img" /></a>
             </main>
             <footer>
                 <section className="footer-sec">

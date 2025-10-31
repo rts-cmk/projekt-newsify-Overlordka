@@ -28,7 +28,6 @@ export default function NewsPopular() {
                         <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="news-sec_logo" />
                         <h2 className="news-sec_title">Newsify</h2>
                     </div>
-                    <input type="text" className="news-sec_search-bar" placeholder="Search news" onChange={(e) => setQuery(e.target.value.toLowerCase())} />
                 </section>
             </header>
             <main>

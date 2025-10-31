@@ -11,6 +11,26 @@ import Login from './components/Login.jsx'
 import Settings from "./components/Settings.jsx"
 import "./style/main.sass"
 
+function applyAllSwitchStates() {
+  try {
+    const raw = localStorage.getItem("switchStates");
+    const states = raw ? JSON.parse(raw) : {};
+    if (!states || typeof states !== "object") return;
+    Object.keys(states).forEach((k) => {
+      const els = document.querySelectorAll(`[data-title="${k}"]`);
+      els.forEach((el) => {
+        if (states[k]) {
+          el.style.removeProperty("display");
+        } else {
+          el.style.setProperty("display", "none", "important");
+        }
+      });
+    });
+  } catch (err) {
+    console.error("applyAllSwitchStates error:", err);
+  }
+}
+
 function App() {
 
   useEffect(() => {
@@ -18,6 +38,23 @@ function App() {
     const darkMode = savedMode ? JSON.parse(savedMode) : false;
     document.body.classList.toggle("dark", darkMode);
   }, []);
+
+  useEffect(() => {
+  applyAllSwitchStates();
+
+  const timer = setTimeout(applyAllSwitchStates, 300);
+
+  const onStorage = (e) => {
+    if (e.key === "switchStates") applyAllSwitchStates();
+  };
+  window.addEventListener("storage", onStorage);
+
+  return () => {
+    clearTimeout(timer);
+    window.removeEventListener("storage", onStorage);
+  };
+}, []);
+
 
   return (
     <>

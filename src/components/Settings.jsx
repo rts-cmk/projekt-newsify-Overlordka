@@ -1,4 +1,5 @@
 import "./Settings.sass"
+import ToggleSwich from "./swicher/ToggleSwich.jsx";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -27,6 +28,43 @@ export default function Settings() {
                 </section>
             </header>
             <main>
+                <section className="inputs-sec">
+                    <div className="inputs-sec_input-div">
+                        <div className="inputs-sec_logo-title-div">
+                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <h2 className="inputs-sec_title">Europe</h2>
+                        </div>
+                        <ToggleSwich title="Europe" />
+                    </div>
+                    <div className="inputs-sec_input-div">
+                        <div className="inputs-sec_logo-title-div">
+                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <h2 className="inputs-sec_title">Health</h2>
+                        </div>
+                        <ToggleSwich title="Health" />
+                    </div>
+                    <div className="inputs-sec_input-div">
+                        <div className="inputs-sec_logo-title-div">
+                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <h2 className="inputs-sec_title">Sport</h2>
+                        </div>
+                        <ToggleSwich title="Sport" />
+                    </div>
+                    <div className="inputs-sec_input-div">
+                        <div className="inputs-sec_logo-title-div">
+                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <h2 className="inputs-sec_title">Business</h2>
+                        </div>
+                        <ToggleSwich title="Business" />
+                    </div>
+                    <div className="inputs-sec_input-div">
+                        <div className="inputs-sec_logo-title-div">
+                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <h2 className="inputs-sec_title">Travel</h2>
+                        </div>
+                        <ToggleSwich title="Travel" />
+                    </div>
+                </section>
                 <button onClick={() => setDarkMode(!darkMode)} className="toggle-dark">Toggle dark mode</button>
             </main>
             <footer>

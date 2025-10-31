@@ -36,16 +36,13 @@ export default function FoldOutAchive({ title, articles = [] }) {
 
         const articlesAchive = JSON.parse(saved)
 
-        // удаляем только ту статью, у которой совпадает _id или url
         const updated = articlesAchive.filter(
             (a) => a._id !== article._id && a.web_url !== article.web_url
         )
 
         localStorage.setItem("selectedArticles", JSON.stringify(updated))
 
-        console.log("✅ Article deleted:", article)
 
-        // обновляем состояние
         setArchivedArticles(updated)
 
         window.location.reload()
@@ -59,7 +56,7 @@ export default function FoldOutAchive({ title, articles = [] }) {
 
     return (
         <>
-            <details onToggle={handleToggle} className="details-fold" style={{ display: articles.length === 0 ? "none" : "block" }}>
+            <details onToggle={handleToggle} className="details-fold" data-title={title.toLowerCase()} style={{ display: articles.length === 0 ? "none" : "block" }}>
                 <summary className="details-fold_summary">
                     <div className="details-fold_summary-div">
                         <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="details-fold_summary-img" />
