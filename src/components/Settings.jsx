@@ -20,7 +20,7 @@ export default function Settings() {
             <header>
                 <section className="news-sec">
                     <div className="news-sec_div-logo">
-                        <img src="../src/newsify_logo.svg" alt="Newsify" className="news-sec_logo" />
+                        <img src="../public/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="news-sec_logo" />
                         <h2 className="news-sec_title">Newsify</h2>
                     </div>
                     <h3 className="news-sec_title-set">Settings</h3>
