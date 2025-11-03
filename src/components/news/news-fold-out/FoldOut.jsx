@@ -64,7 +64,7 @@ export default function FouldOut({ title, articles = [] }) {
     <details onToggle={handleToggle} className="details-fold" data-title={title.toLowerCase()} style={{display: JSON.parse(localStorage.getItem("switchStates") || '{}')[title.toLowerCase()] === false || articles.length === 0 ? "none" : "block"}}>
                 <summary className="details-fold_summary">
                     <div className="details-fold_summary-div">
-                        <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="details-fold_summary-img" />
+                        <img src="../public/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="details-fold_summary-img" />
                         <h2 className="details-fold_summary-h2">{title}</h2>
                     </div>
                     <IoIosArrowBack className="details-fold_summary-svg" />

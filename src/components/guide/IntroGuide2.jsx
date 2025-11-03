@@ -12,7 +12,7 @@ export default function IntroGuide2() {
     return (
         <section className="guide-section">
             <article className="guide-article">
-                <img src="../src/assets/imgs/guide-2.png" alt="Guide" className="guide-article_img" />
+                <img src="../public/assets/imgs/guide-2.png" alt="Guide" className="guide-article_img" />
                 <h2 className="guide-article_title">
                     Become a Savvy Global Citizen.
                 </h2>

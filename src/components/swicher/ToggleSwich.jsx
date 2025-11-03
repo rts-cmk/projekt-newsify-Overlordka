@@ -19,8 +19,7 @@ export default function ToggleSwich({ title, onChange }) {
     const saved = getSavedStates();
     return saved[key] !== undefined ? Boolean(saved[key]) : true;
   });
-
-  // Обновляем localStorage и вызываем callback при переключении
+  
   useEffect(() => {
     const saved = getSavedStates();
     saved[key] = isOn;
