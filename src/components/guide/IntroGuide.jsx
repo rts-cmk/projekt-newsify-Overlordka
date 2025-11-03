@@ -12,7 +12,7 @@ export default function IntroGuide() {
     return (
         <section className="guide-section">
             <article className="guide-article">
-                <img src="../src/assets/imgs/guide-1.png" alt="Guide" className="guide-article_img" />
+                <img src="assets/imgs/guide-1.png" alt="Guide" className="guide-article_img" />
                 <h2 className="guide-article_title">
                     Stay Connected, Everywhere, Anytime
                 </h2>

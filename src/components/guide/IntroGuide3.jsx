@@ -17,7 +17,7 @@ export default function IntroGuide2() {
     return (
         <section className="guide-section">
             <article className="guide-article">
-                <img src="../src/assets/imgs/guide-3.png" alt="Guide" className="guide-article_img" />
+                <img src="assets/imgs/guide-3.png" alt="Guide" className="guide-article_img" />
                 <h2 className="guide-article_title">
                     Enhance your News Journey Now!
                 </h2>

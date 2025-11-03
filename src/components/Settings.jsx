@@ -20,7 +20,7 @@ export default function Settings() {
             <header>
                 <section className="news-sec">
                     <div className="news-sec_div-logo">
-                        <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="news-sec_logo" />
+                        <img src="assets/logo&icons/newsify_logo.svg" alt="Newsify" className="news-sec_logo" />
                         <h2 className="news-sec_title">Newsify</h2>
                     </div>
                     <h3 className="news-sec_title-set">Settings</h3>
@@ -31,35 +31,35 @@ export default function Settings() {
                 <section className="inputs-sec">
                     <div className="inputs-sec_input-div">
                         <div className="inputs-sec_logo-title-div">
-                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <img src="assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
                             <h2 className="inputs-sec_title">Europe</h2>
                         </div>
                         <ToggleSwich title="Europe" />
                     </div>
                     <div className="inputs-sec_input-div">
                         <div className="inputs-sec_logo-title-div">
-                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <img src="assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
                             <h2 className="inputs-sec_title">Health</h2>
                         </div>
                         <ToggleSwich title="Health" />
                     </div>
                     <div className="inputs-sec_input-div">
                         <div className="inputs-sec_logo-title-div">
-                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <img src="assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
                             <h2 className="inputs-sec_title">Sport</h2>
                         </div>
                         <ToggleSwich title="Sport" />
                     </div>
                     <div className="inputs-sec_input-div">
                         <div className="inputs-sec_logo-title-div">
-                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <img src="assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
                             <h2 className="inputs-sec_title">Business</h2>
                         </div>
                         <ToggleSwich title="Business" />
                     </div>
                     <div className="inputs-sec_input-div">
                         <div className="inputs-sec_logo-title-div">
-                            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
+                            <img src="assets/logo&icons/newsify_logo.svg" alt="Newsify" className="inputs-sec_img" />
                             <h2 className="inputs-sec_title">Travel</h2>
                         </div>
                         <ToggleSwich title="Travel" />

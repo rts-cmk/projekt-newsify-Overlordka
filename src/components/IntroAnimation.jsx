@@ -8,9 +8,9 @@ export default function IntroAnimation() {
     useEffect(() => {
 
         const imagesToPreload = [
-            "../src/assets/imgs/guide-1.png",
-            "../src/assets/imgs/guide-2.png",
-            "../src/assets/imgs/guide-3.png"
+            "../public/assets/imgs/guide-1.png",
+            "../public/assets/imgs/guide-2.png",
+            "../public/assets/imgs/guide-3.png"
         ]
 
         imagesToPreload.forEach((src) => {
@@ -35,7 +35,7 @@ export default function IntroAnimation() {
 
     return (
         <section className="logo-animation">
-            <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="logo-animation_logo" />
+            <img src="assets/logo&icons/newsify_logo.svg" alt="Newsify" className="logo-animation_logo" />
             <h1 className="logo-animation_title">Newsify</h1>
         </section>
     )

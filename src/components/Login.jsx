@@ -7,7 +7,7 @@ export default function Login() {
     return (
         <section className="login-section">
             <article className="login-section_art-logo">
-                <img src="../src/assets/logo&icons/newsify_logo.svg" alt="Newsify" className="login-section_logo" />
+                <img src="assets/logo&icons/newsify_logo.svg" alt="Newsify" className="login-section_logo" />
                 <h2 className="login-section_title">Newsify</h2>
                 <p className="login-section_w-text">Welcome! Let’s dive into your account!</p>
             </article>
