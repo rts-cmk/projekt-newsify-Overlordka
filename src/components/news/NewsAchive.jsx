@@ -23,7 +23,7 @@ export default function NewsAchive() {
                 <section className="news-sec">
                     <div className="news-sec_div-logo">
                         <img
-                            src="../public/assets/logo&icons/newsify_logo.svg"
+                            src="assets/logo&icons/newsify_logo.svg"
                             alt="Newsify"
                             className="news-sec_logo"
                         />
