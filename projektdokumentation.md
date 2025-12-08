@@ -8,7 +8,7 @@
 
 **Uddannelsessted:** Roskilde Tekniske Skole
 
-[Link til min applikaton](https://projekt-newsify-overlordka-ocxpmo9l7-kostiakas-projects.vercel.app)
+[Link til min applikaton](https://projekt-newsify-overlordka-gi2wpgkw8-kostiakas-projects.vercel.app)
 
 
 ## Teknologier
