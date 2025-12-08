@@ -88,7 +88,7 @@ export default function FouldOut({ title, articles = [] }) {
                                                 <img src={imageUrl} alt={article.headline?.main} className="details-fold_img" />
                                             </div>
                                             <div className="details-fold_text">
-                                                <h3 className="details-fold_title">{article.keywords[0].value}</h3>
+                                                <h3 className="details-fold_title">{article.keywords[0]?.value}</h3>
                                                 <p className="details-fold_p">{article.headline?.main}</p>
                                             </div>
                                             <div className="details-fold_div-slide">
